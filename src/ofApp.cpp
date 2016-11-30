@@ -6,7 +6,7 @@ int debugZ=20;
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    int bufferSize		= 256;
+    int bufferSize		= 512;
     int sampleRate 		= 44100;
     
     soundStream.setup(2, 0, 44100, 256, 4);
@@ -21,9 +21,22 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     bk.update();
+    
+    //Check if we have to remove a foreground, else update it
+    for (int i=0;i<foregrounds.size();i++){
+        if(foregrounds[i]->getBRemove()){
+            delete (foregrounds[i]);
+            foregrounds.erase(foregrounds.begin()+i);
+        }else{
+            foregrounds[i]->update();
+        }
+    }
+
+    
+    /*
     for(auto foreground:foregrounds){
         foreground->update();
-    }
+    }*/
     
   }
 
@@ -59,17 +72,43 @@ void ofApp::keyPressed(int key){
          //hello
         fg->setNumSyllables(2);
         fg->setVowels("eo");
-     fg->setPosition(ofVec3f(0,0,0));
+        fg->setPosition(ofVec3f(0,0,0));
         mixer.addInputFrom(fg);
         foregrounds.push_back(fg);
         cout<<"Number of foreground sounds: "<<foregrounds.size()<<endl;
-     
     }
     
     if(key=='+'){
         debugZ++;
         foregrounds[0]->setPosition(ofVec3f(0,0,debugZ));
         
+    }
+    
+    
+    
+    if(key=='p'){
+        ForegroundSound *fg = new ForegroundSound();
+        fg->setup();
+        //pattern
+        fg->setNumSyllables(2);
+        fg->setVowels("ae");
+        fg->setPosition(ofVec3f(0,0,34));
+        mixer.addInputFrom(fg);
+        foregrounds.push_back(fg);
+        cout<<"Number of foreground sounds: "<<foregrounds.size()<<endl;
+    }
+    
+    
+    if(key=='P'){
+        ForegroundSound *fg = new ForegroundSound();
+        fg->setup();
+        //retart
+        fg->setNumSyllables(2);
+        fg->setVowels("ea");
+        fg->setPosition(ofVec3f(0,0,34));
+        mixer.addInputFrom(fg);
+        foregrounds.push_back(fg);
+        cout<<"Number of foreground sounds: "<<foregrounds.size()<<endl;
     }
     
     
