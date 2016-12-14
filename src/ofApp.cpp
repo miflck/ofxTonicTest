@@ -6,14 +6,21 @@ int debugZ=20;
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    int bufferSize		= 512;
+    int bufferSize		= 2048;
     int sampleRate 		= 44100;
     
-    soundStream.setup(2, 0, 44100, 256, 4);
+    soundStream.setup(2, 0, 44100, bufferSize, 4);
     soundStream.setOutput(this);
     
     bk.setup();
     mixer.addInputFrom(&bk);
+    
+    volume				= 0.81f;
+
+    wetness				= 0.5f;
+    verbRoomSize		= 0.9f;
+    verbDamp			= 0.9f;
+    verbWidth			= 0.99f;
 
     
 }
@@ -48,7 +55,12 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
+    
     if(key=='r'){
+        bReverb=!bReverb;
+    }
+    
+    if(key=='R'){
     mixer.removeInputFrom(synths[synths.size()-1]);
     
     delete (synths[synths.size()-1]);
@@ -172,7 +184,36 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 //--------------------------------------------------------------
 void ofApp::audioOut(float * output, int bufferSize, int nChannels){
-    mixer.audioRequested(output, bufferSize, nChannels);
+    
+    
+    float pan = 0.5f;
+    float leftScale = 1 - pan;
+    float rightScale = pan;
+    
+    
+    reverb.setroomsize(verbRoomSize);
+    reverb.setdamp(verbDamp);
+    reverb.setwidth(verbWidth);
+    reverb.setwet(wetness);
+    reverb.setdry(1.0f - wetness);
+
+    
+   mixer.audioRequested(output, bufferSize, nChannels);
+    
+    
+    
+    for (int i = 0; i < bufferSize; i++){
+        float left =output[i*nChannels]* volume * leftScale;
+        float right =output[i*nChannels+1]* volume * leftScale;
+        
+        if(bReverb) {
+            reverb.processreplace(&left, &right, &output[i*nChannels], &output[i*nChannels + 1], 1, 1);
+        }else{
+            output[i*nChannels + 0] = left;
+            output[i*nChannels + 1] = right ;
+            
+        }
+    }
 
 }
 

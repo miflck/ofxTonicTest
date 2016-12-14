@@ -79,6 +79,10 @@
 		FA002A3E1DEC8C4C000B1928 /* ForegroundSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA002A3C1DEC8C4C000B1928 /* ForegroundSound.cpp */; };
 		FA26EC101DEB31AF00D8ADF3 /* ofSoundEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26EC0C1DEB31AF00D8ADF3 /* ofSoundEffect.cpp */; };
 		FA26EC111DEB31AF00D8ADF3 /* ofSoundUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26EC0E1DEB31AF00D8ADF3 /* ofSoundUnit.cpp */; };
+		FA7D72481E004B39005C0555 /* allpass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA7D723B1E004B39005C0555 /* allpass.cpp */; };
+		FA7D72491E004B39005C0555 /* comb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA7D723D1E004B39005C0555 /* comb.cpp */; };
+		FA7D724A1E004B39005C0555 /* revmodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA7D72401E004B39005C0555 /* revmodel.cpp */; };
+		FA7D724B1E004B39005C0555 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FA7D72431E004B39005C0555 /* README.md */; };
 		FB0CEC2120B7ECC76CA7681F /* RectWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E90A19ED1C18D71FCFF4311 /* RectWave.cpp */; };
 		FC664DBA581A9170D7221E80 /* ControlFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2CF9DA1939F4FBF25F5464C /* ControlFloor.cpp */; };
 		FEA5296A25F0CE0014A38A0D /* SawtoothWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1291F0DE19D1635A4F0CD3D /* SawtoothWave.cpp */; };
@@ -270,6 +274,16 @@
 		FA26EC0E1DEB31AF00D8ADF3 /* ofSoundUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofSoundUnit.cpp; sourceTree = "<group>"; };
 		FA26EC0F1DEB31AF00D8ADF3 /* ofSoundUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofSoundUnit.h; sourceTree = "<group>"; };
 		FA3806E5CC3407A997C05CEC /* ControlPrinter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ControlPrinter.cpp; path = ../../../addons/ofxTonic/src/Tonic/ControlPrinter.cpp; sourceTree = SOURCE_ROOT; };
+		FA7D723B1E004B39005C0555 /* allpass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = allpass.cpp; sourceTree = "<group>"; };
+		FA7D723C1E004B39005C0555 /* allpass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = allpass.hpp; sourceTree = "<group>"; };
+		FA7D723D1E004B39005C0555 /* comb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = comb.cpp; sourceTree = "<group>"; };
+		FA7D723E1E004B39005C0555 /* comb.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = comb.hpp; sourceTree = "<group>"; };
+		FA7D723F1E004B39005C0555 /* denormals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = denormals.h; sourceTree = "<group>"; };
+		FA7D72401E004B39005C0555 /* revmodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = revmodel.cpp; sourceTree = "<group>"; };
+		FA7D72411E004B39005C0555 /* revmodel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = revmodel.hpp; sourceTree = "<group>"; };
+		FA7D72421E004B39005C0555 /* tuning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tuning.h; sourceTree = "<group>"; };
+		FA7D72431E004B39005C0555 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FA7D72451E004B39005C0555 /* ofxReverb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxReverb.h; sourceTree = "<group>"; };
 		FB5AEBCD574AD1AC8CEB20EB /* Noise.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Noise.h; path = ../../../addons/ofxTonic/src/Tonic/Noise.h; sourceTree = SOURCE_ROOT; };
 		FD28E2D7F19057D05148E286 /* RingBuffer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = RingBuffer.cpp; path = ../../../addons/ofxTonic/src/Tonic/RingBuffer.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -474,6 +488,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				FA7D72281E004B39005C0555 /* ofxReverb */,
 				FA26EC0B1DEB31AF00D8ADF3 /* ofxDspChain */,
 				480A780D8D0308AE4A368801 /* ofxGui */,
 				76271A12053DA157D2DB4F78 /* ofxTonic */,
@@ -537,6 +552,40 @@
 			);
 			name = ofxDspChain;
 			path = ../../../addons/ofxDspChain;
+			sourceTree = "<group>";
+		};
+		FA7D72281E004B39005C0555 /* ofxReverb */ = {
+			isa = PBXGroup;
+			children = (
+				FA7D723A1E004B39005C0555 /* libs */,
+				FA7D72431E004B39005C0555 /* README.md */,
+				FA7D72441E004B39005C0555 /* src */,
+			);
+			name = ofxReverb;
+			path = ../../../addons/ofxReverb;
+			sourceTree = "<group>";
+		};
+		FA7D723A1E004B39005C0555 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				FA7D723B1E004B39005C0555 /* allpass.cpp */,
+				FA7D723C1E004B39005C0555 /* allpass.hpp */,
+				FA7D723D1E004B39005C0555 /* comb.cpp */,
+				FA7D723E1E004B39005C0555 /* comb.hpp */,
+				FA7D723F1E004B39005C0555 /* denormals.h */,
+				FA7D72401E004B39005C0555 /* revmodel.cpp */,
+				FA7D72411E004B39005C0555 /* revmodel.hpp */,
+				FA7D72421E004B39005C0555 /* tuning.h */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		FA7D72441E004B39005C0555 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FA7D72451E004B39005C0555 /* ofxReverb.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,12 +690,14 @@
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				A08D9CF6078FDA57A7CE04C4 /* ofxTonicSynth.cpp in Sources */,
 				92AE3EF9D1E9798885317D7E /* ADSR.cpp in Sources */,
+				FA7D724A1E004B39005C0555 /* revmodel.cpp in Sources */,
 				D4A9ADF52DC2FA5CFFD80A51 /* Arithmetic.cpp in Sources */,
 				6A9FF5E7244C5229CDB118E6 /* AudioFileUtils.cpp in Sources */,
 				98576F60E227C1D99FE2F41A /* BasicDelay.cpp in Sources */,
 				FA26EC111DEB31AF00D8ADF3 /* ofSoundUnit.cpp in Sources */,
 				E9FCAE93093A1FD0CFB5A221 /* BitCrusher.cpp in Sources */,
 				9BFA84E5222E04EC8EA818BA /* BLEPOscillator.cpp in Sources */,
+				FA7D724B1E004B39005C0555 /* README.md in Sources */,
 				88F0141963F235083C77F226 /* BufferFiller.cpp in Sources */,
 				A66513664925AA4A16521B35 /* BufferPlayer.cpp in Sources */,
 				E829B9DA6F7132C5F8EA8A0C /* CombFilter.cpp in Sources */,
@@ -672,8 +723,10 @@
 				3F63B4CE561C9ADEF941D745 /* ControlRecorder.cpp in Sources */,
 				08A6D973887595CDADAF4FD7 /* ControlSnapToScale.cpp in Sources */,
 				61FB003EA31E8CC722F7A0EF /* ControlStepper.cpp in Sources */,
+				FA7D72481E004B39005C0555 /* allpass.cpp in Sources */,
 				F7DBF98108C24B1D576DE0E6 /* ControlSwitcher.cpp in Sources */,
 				23E21567BA4C43105A9339A9 /* ControlTrigger.cpp in Sources */,
+				FA7D72491E004B39005C0555 /* comb.cpp in Sources */,
 				AAFCC1A80FA3C88E6D1B2A3D /* ControlTriggerFilter.cpp in Sources */,
 				8B72AE5AA49843C668896D2D /* ControlValue.cpp in Sources */,
 				3A0CDB804AFFD643D5E7FDA1 /* ControlXYSpeed.cpp in Sources */,

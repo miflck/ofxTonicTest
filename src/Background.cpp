@@ -37,7 +37,6 @@ void Background::setup(){
         userbgbeat[p] = int(ofRandom(8));
     }
     
-    Generator           reveroo = Reverb();
     
     // user 1 background instrument
     
@@ -52,7 +51,7 @@ void Background::setup(){
     
     panner = MonoToStereoPanner().pan(panning).input(( (tone * ADSR(0.001,0.05,0,00).trigger(triggeroo)) * volume) * userbgcut);
     
-    synth.setOutputGen(reveroo + panner);
+    synth.setOutputGen(panner);
 
     
     

@@ -5,6 +5,8 @@
 #include "MySynth.h"
 #include "Background.h"
 #include "ForegroundSound.hpp"
+#include "ofxReverb.h"
+
 
 
 
@@ -45,6 +47,14 @@ class ofApp : public ofBaseApp{
 
 
     Background bk;
+    
+    //Reverb
+    float 	volume;
+
+    ofxReverb	reverb;
+    float		wetness,verbRoomSize,verbDamp,verbWidth;
+    float		reverbOUT;
+    bool bReverb = false;
 
     
 };

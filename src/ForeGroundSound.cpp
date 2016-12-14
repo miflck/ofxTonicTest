@@ -36,10 +36,8 @@ void ForegroundSound::setup(){
     
     tone.freq(noteFreq);
     
-    Generator  reveroo = Reverb();
-    reveroo = Reverb().input(panner).decayTime(10).roomSize(20).wetLevel(0.5);
     panner = MonoToStereoPanner().pan(panning).input(( (tone * ADSR(0.001,0.05,0,00).trigger(fgtrig)) * volume) * fgcut);
-    synth.setOutputGen(reveroo + panner);
+    synth.setOutputGen(panner);
     
     
     int notes[] = {0,0,0,0,0,0,0};
