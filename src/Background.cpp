@@ -85,7 +85,7 @@ void Background::update(){
     }
     
     synth.setParameter("panning", 0);               // panning and volume - currently static
-    synth.setParameter("volume", 0.2);
+    synth.setParameter("volume", 0.8);
     
     
     if(ofGetFrameNum() % speed == 0)                //  sequencer section timed from frame count

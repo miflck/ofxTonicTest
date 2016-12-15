@@ -8,7 +8,6 @@
 
 #ifndef ForegroundSound_hpp
 #define ForegroundSound_hpp
-
 #include <stdio.h>
 #include "ofMain.h"
 #include "ofxTonic.h"
@@ -37,6 +36,7 @@ public:
     void setNumSyllables(int _num);
     
     void setPosition (ofVec3f _pos);
+    void setTimingSubDiv(int _timeSubDiv);
     
     bool getBRemove();
 
@@ -52,6 +52,8 @@ private:
     
     int numSyllables;
     
+    int timeSubDiv;
+    
     ofVec3f position;
     int maxZ;
     float scaledZpos;
@@ -62,6 +64,7 @@ private:
    vector< int > fgnotes= {0,0,0,0,0,0,0};
     vector< int > fgbeats = {0,1,1,1,1,1,1,1,1,1,1};
     vector< int > scale = {220, 880 ,261,329,329,392,392,440,220};
+    int beat;
 
 /*
     

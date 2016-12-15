@@ -44,7 +44,6 @@ void ForegroundSound::setup(){
     int beats[] = {0,1,1,1,1,1,1,1,1,1,1};
     int fgscale[] = {220, 880 ,261,329,329,392,392,440,220};
     
-    
     /*fgnotes=notes;
     fgbeats=beats;
     scale=fgscale;*/
@@ -104,10 +103,7 @@ void ForegroundSound::update(){
     fgnotes[6] =  scale[sylcont6];
     
     
-    
-    
-    
-    if ( ofGetFrameNum() % 14 == 0)
+    if( ofGetFrameNum() % timeSubDiv == 0) //ofGetElapsedTimeMillis()
     {
         z ++;
         if(z > numSyllables)
@@ -135,6 +131,10 @@ void ForegroundSound::setNumSyllables(int _num){
 void ForegroundSound::setPosition(ofVec3f _position){
     position.set(_position);
     cout<<"My Position "<<position;
+}
+
+void ForegroundSound::setTimingSubDiv(int _timeSubDiv) {
+    timeSubDiv = _timeSubDiv;
 }
 
 

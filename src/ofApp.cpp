@@ -16,13 +16,12 @@ void ofApp::setup(){
     mixer.addInputFrom(&bk);
     
     volume				= 0.81f;
-
-    wetness				= 0.5f;
-    verbRoomSize		= 0.9f;
-    verbDamp			= 0.9f;
+    wetness				= 0.2f;
+    verbRoomSize		= 0.99f;
+    verbDamp			= 0.2f;
     verbWidth			= 0.99f;
 
-    
+    bReverb=!bReverb;
 }
 
 //--------------------------------------------------------------
@@ -56,9 +55,9 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
     
     
-    if(key=='r'){
-        bReverb=!bReverb;
-    }
+//    if(key=='r'){
+//        bReverb=!bReverb;
+//    }
     
     if(key=='R'){
     mixer.removeInputFrom(synths[synths.size()-1]);
@@ -70,7 +69,7 @@ void ofApp::keyPressed(int key){
     
     if(key=='a'){
         MySynth *s = new MySynth();
-        s->setup(ofRandom(100,900));
+        s->setup(55);        // ANT frequency here should be from scale
         mixer.addInputFrom(s);
         synths.push_back(s);
         cout<<synths.size()<<endl;
@@ -85,6 +84,7 @@ void ofApp::keyPressed(int key){
         fg->setNumSyllables(2);
         fg->setVowels("eo");
         fg->setPosition(ofVec3f(0,0,0));
+        fg->setTimingSubDiv(10 + int(ofRandom(20)));
         mixer.addInputFrom(fg);
         foregrounds.push_back(fg);
         cout<<"Number of foreground sounds: "<<foregrounds.size()<<endl;
@@ -102,8 +102,22 @@ void ofApp::keyPressed(int key){
         ForegroundSound *fg = new ForegroundSound();
         fg->setup();
         //pattern
-        fg->setNumSyllables(2);
-        fg->setVowels("ae");
+        fg->setTimingSubDiv(10 + int(ofRandom(20)));
+        fg->setNumSyllables(4);
+        fg->setVowels("aeou");
+        fg->setPosition(ofVec3f(0,0,34));
+        mixer.addInputFrom(fg);
+        foregrounds.push_back(fg);
+        cout<<"Number of foreground sounds: "<<foregrounds.size()<<endl;
+    }
+    
+    if(key=='o'){
+        ForegroundSound *fg = new ForegroundSound();
+        fg->setup();
+        //pattern
+        fg->setTimingSubDiv(10 + int(ofRandom(20)));
+        fg->setNumSyllables(6);
+        fg->setVowels("aeouyu");
         fg->setPosition(ofVec3f(0,0,34));
         mixer.addInputFrom(fg);
         foregrounds.push_back(fg);
@@ -111,12 +125,14 @@ void ofApp::keyPressed(int key){
     }
     
     
+    
     if(key=='P'){
         ForegroundSound *fg = new ForegroundSound();
         fg->setup();
         //retart
-        fg->setNumSyllables(2);
-        fg->setVowels("ea");
+        fg->setTimingSubDiv(10 + int(ofRandom(20)));
+        fg->setNumSyllables(3);
+        fg->setVowels("eae");
         fg->setPosition(ofVec3f(0,0,34));
         mixer.addInputFrom(fg);
         foregrounds.push_back(fg);

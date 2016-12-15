@@ -18,29 +18,30 @@ void MySynth::setSampleRate(int rate){
 
 
 void MySynth::setup(float _p){
-    volume	= 0.79f;
-
-
-    
-    // create a new oscillator which we'll use for the actual audio signal
-    SineWave tone = SineWave();
-    
-    // create a sine wave we'll use for some vibrato
-    SineWave vibratoOsc = SineWave();
-    vibratoOsc.freq(1);
-    
-    // you can use the regular arithmatic operators on Generators and their subclasses (SineWave extends Generator)
+    volume	= 0.5f;
     float basePitch = _p;
-    Generator frequency = basePitch + (vibratoOsc * basePitch * 0.01);
     
-    // plug that frequency generator into the frequency slot of the main audio-producing sine wave
-    tone.freq(frequency);
+     SawtoothWave saw = SawtoothWave();
+    
+    saw.freq(basePitch);
+    SineWave vibratoOsc = SineWave();
+    vibratoOsc.freq(0.1);
+
+    
+
+    SineWave tone = SineWave();
+    LPF24 filter = LPF24().cutoff(200 * (vibratoOsc + 1)).input(saw).Q(0);
+    
+   
+    tone.freq(basePitch);
+  
+    
     
     // let's also create a tremelo effect
     SineWave tremeloSine = SineWave().freq(0.1);
     
     // set the synth's final output generator
-    synth.setOutputGen( tone * tremeloSine );
+    synth.setOutputGen( (filter  * (tremeloSine * 0.1) * 0.7) );
     
     
 }
